@@ -1,6 +1,6 @@
 package turniplabs.farlanders.mixin;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.core.Global;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.player.inventory.InventoryPlayer;
@@ -12,16 +12,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import turniplabs.farlanders.Farlanders;
+import turniplabs.farlanders.FarlandersClient;
 
 @Mixin(value = EntityPlayer.class, remap = false)
 public abstract class EntityPlayerMixin extends Entity {
-
-	@Unique
-	private boolean toggledFullBright = false;
 	@Unique
 	private int durabilityTimer = 0;
-	@Unique
-	private Boolean gameFullBright = null;
 
 	@Shadow
 	public final InventoryPlayer inventory = new InventoryPlayer((EntityPlayer)(Object)this);
@@ -46,36 +42,9 @@ public abstract class EntityPlayerMixin extends Entity {
 				}
 			}
 		}
-
-		Minecraft mc = Minecraft.getMinecraft(this);
-		if (mc != null){
-			if (gameFullBright == null){
-				gameFullBright = mc.fullbright;
-			}
-			if (hasNightVision()){
-				if (!toggledFullBright && mc.fullbright)
-					gameFullBright = true;
-
-				if (!toggledFullBright) {
-					if (!mc.fullbright) {
-						mc.fullbright = true;
-						mc.renderGlobal.loadRenderers();
-					}
-					toggledFullBright = true;
-				}
-
-				if (!mc.fullbright) {
-					gameFullBright = !gameFullBright;
-					mc.fullbright = true;
-					mc.renderGlobal.loadRenderers();
-				}
-			} else {
-				if (toggledFullBright) {
-					mc.fullbright = gameFullBright;
-					toggledFullBright = false;
-					mc.renderGlobal.loadRenderers();
-				}
-			}
+		if (!Global.isServer){
+			FarlandersClient.fullbrightStuff(hasNightVision());
 		}
+
 	}
 }

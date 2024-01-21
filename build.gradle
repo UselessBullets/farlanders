@@ -104,9 +104,9 @@ dependencies {
 	modImplementation "DragonFly:dragonfly:${project.dragonfly_version}"
 
 	modImplementation "BTA_Babric_PrismaticLibe:prismaticlibe:3.0.1-7.1"
-	modImplementation "BTA_Babric_SpawnEggs:spawneggs:2.0.1-7.1"
+	modImplementation "BTA_Babric_SpawnEggs:spawneggs:2.0.2-7.1"
 
-	modImplementation "ModMenu:ModMenu:2.0.0"
+	modImplementation "ModMenu:ModMenu:2.0.3"
 
 	//modImplementation "NoCrashes:NoCrashes:1.0.4"
 
