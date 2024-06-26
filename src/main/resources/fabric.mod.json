@@ -27,9 +27,6 @@
     "beforeGameStart": [
 			"turniplabs.farlanders.Farlanders"
     ],
-		"beforeClientStart": [
-			"turniplabs.farlanders.Farlanders"
-		],
 		"recipesReady": [
 			"turniplabs.farlanders.entity.crafting.FarlandersRecipes"
 		],

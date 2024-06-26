@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '1.1.+'
+	id 'babric-loom' version '1.4.+'
 	id 'java'
 }
 
@@ -73,7 +73,7 @@ repositories {
 		metadataSources { artifact() }
 	}
 	ivy {
-		url = "https://github.com/UselessBullets"
+		url = "https://github.com/UselessSolutions"
 		patternLayout {
 			artifact "[organisation]/releases/download/v[revision]/[module]-[revision].jar"
 			m2compatible = true
@@ -81,7 +81,7 @@ repositories {
 		metadataSources { artifact() }
 	}
 	ivy {
-		url = "https://github.com/UselessBullets"
+		url = "https://github.com/UselessSolutions"
 		patternLayout {
 			artifact "[organisation]/releases/download/[revision]/[module]-[revision].jar"
 			m2compatible = true
@@ -103,10 +103,10 @@ dependencies {
 	// Dragonfly API
 	modImplementation "DragonFly:dragonfly:${project.dragonfly_version}"
 
-	modImplementation "BTA_Babric_PrismaticLibe:prismaticlibe:3.0.1-7.1"
-	modImplementation "BTA_Babric_SpawnEggs:spawneggs:2.0.2-7.1"
+	compileOnly "BTA_Babric_PrismaticLibe:prismaticlibe:3.0.1-7.1"
+	compileOnly "BTA_Babric_SpawnEggs:spawneggs:2.0.2-7.1"
 
-	modImplementation "ModMenu:ModMenu:2.0.3"
+	modImplementation "ModMenu:ModMenu:2.0.6"
 
 	//modImplementation "NoCrashes:NoCrashes:1.0.4"
 

@@ -1,7 +1,7 @@
 package turniplabs.farlanders.entity.render;
 
 import net.minecraft.core.util.helper.MathHelper;
-import useless.dragonfly.model.entity.BenchEntityModel;
+import org.useless.dragonfly.model.entity.BenchEntityModel;
 
 public class ModelFarlander extends BenchEntityModel {
 

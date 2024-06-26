@@ -1,12 +1,13 @@
 package turniplabs.farlanders.entity.render;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.render.LightmapHelper;
 import net.minecraft.client.render.entity.LivingRenderer;
 import net.minecraft.client.render.model.ModelBase;
 import org.lwjgl.opengl.GL11;
+import org.useless.dragonfly.helper.ModelHelper;
 import turniplabs.farlanders.Farlanders;
 import turniplabs.farlanders.entity.EntityFarlander;
-import useless.dragonfly.helper.ModelHelper;
 
 public class RendererFarlander extends LivingRenderer<EntityFarlander> {
 
@@ -17,10 +18,14 @@ public class RendererFarlander extends LivingRenderer<EntityFarlander> {
 
     private boolean setEyeBrightness(EntityFarlander farlander, int i, float f) {
         if (i == 0) {
-            loadTexture("/mob/farlander/farlander_eyes.png");
+            loadTexture("/assets/farlanders/textures/entity/farlander/farlander_eyes.png");
             float brightness = farlander.getBrightness(1.0f);
             if (Minecraft.getMinecraft(this).fullbright)
                 brightness = 1.0f;
+
+			if (LightmapHelper.isLightmapEnabled()) {
+				LightmapHelper.setLightmapCoord(LightmapHelper.getLightmapCoord(15, 15));
+			}
 
             float f1 = (1.0f - brightness) * 0.5f;
             GL11.glEnable(3042);

@@ -1,6 +1,7 @@
 package turniplabs.farlanders.entity.render;
 
-import useless.dragonfly.model.entity.BenchEntityModel;
+
+import org.useless.dragonfly.model.entity.BenchEntityModel;
 
 public class ModelEyes extends BenchEntityModel {
 

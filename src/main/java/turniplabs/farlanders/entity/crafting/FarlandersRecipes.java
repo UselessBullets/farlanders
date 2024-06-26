@@ -1,24 +1,26 @@
 package turniplabs.farlanders.entity.crafting;
 
-import net.minecraft.core.block.Block;
-import net.minecraft.core.data.DataLoader;
-import net.minecraft.core.data.registry.Registries;
-import net.minecraft.core.data.registry.recipe.RecipeGroup;
-import net.minecraft.core.data.registry.recipe.RecipeNamespace;
-import net.minecraft.core.data.registry.recipe.RecipeSymbol;
-import net.minecraft.core.data.registry.recipe.entry.RecipeEntryCrafting;
-import net.minecraft.core.item.ItemStack;
+import net.minecraft.core.item.Item;
 import turniplabs.farlanders.Farlanders;
+import turniplabs.halplibe.helper.RecipeBuilder;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 public class FarlandersRecipes implements RecipeEntrypoint {
-	public static final RecipeNamespace FARLANDERS = new RecipeNamespace();
-	public static final RecipeGroup<RecipeEntryCrafting<?, ?>> WORKBENCH = new RecipeGroup<>(new RecipeSymbol(new ItemStack(Block.workbench)));
 
 	@Override
 	public void onRecipesReady() {
-		FARLANDERS.register("workbench", WORKBENCH);
-		Registries.RECIPES.register(Farlanders.MOD_ID, FARLANDERS);
-		DataLoader.loadRecipes("/assets/farlanders/recipes/workbench.json");
+		RecipeBuilder.Shaped(Farlanders.MOD_ID)
+			.setShape(
+				"111",
+				"1 1",
+				"2 2")
+			.addInput('1', Item.ingotGold)
+			.addInput('2', Farlanders.itemLens)
+			.create("goggles", Farlanders.itemArmorGoggles.getDefaultStack());
+	}
+
+	@Override
+	public void initNamespaces() {
+		RecipeBuilder.initNameSpace(Farlanders.MOD_ID);
 	}
 }
